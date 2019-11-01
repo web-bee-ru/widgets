@@ -1,0 +1,20 @@
+{
+  "name": "@web-bee-ru/widgets",
+  "version": "0.1.0",
+  "description": "",
+  "module": "index.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-bee-ru/widgets.git"
+  },
+  "author": "dev@web-bee.ru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/web-bee-ru/widgets/issues"
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/web-bee-ru/widgets#readme",
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
+}

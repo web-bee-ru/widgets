@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap --force-local",
+    "clean": "lerna clean",
+    "publish": "lerna publish",
+    "dev": "lerna run --stream --scope sandbox dev"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "lerna": "^3.18.3"
+  }
+}

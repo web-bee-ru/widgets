@@ -1,0 +1,14 @@
+{
+  "name": "sandbox",
+  "private": true,
+  "version": "0.1.0",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "@web-bee-ru/widgets": "^0.1.0",
+    "bootstrap-css-only": "^4.3.1",
+    "nuxt": "^2.10.2"
+  }
+}
