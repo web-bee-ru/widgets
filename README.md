@@ -39,3 +39,11 @@ npm run dev # will start nuxt sandbox
 ```
 
 If you experience issues, try `npm run clean` and then `npm run bootstrap` again.
+
+# Publish
+
+```bash
+npm run publish
+```
+
+If you experience issues with ssh key passphrase, try running `start-ssh-agent` before publishing.
