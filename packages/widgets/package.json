@@ -16,5 +16,8 @@
   "homepage": "https://github.com/web-bee-ru/widgets#readme",
   "dependencies": {
     "classnames": "^2.2.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
