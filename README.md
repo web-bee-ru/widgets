@@ -34,7 +34,8 @@ Vue.use(VuePlugin);
 ## Develop
 
 ```bash
-npm run bootstrap # will install dependencies
+npm i # will install dev environment dependencies
+npm run bootstrap # will link package dependencies
 npm run dev # will start nuxt sandbox
 ```
 

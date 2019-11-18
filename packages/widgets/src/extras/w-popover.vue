@@ -1,6 +1,9 @@
+<!--
+@FIXME: Есть известный баг: когда происходит hot-reload, если при этом был открыт поповер, то будут проблемы.
+-->
+
 <template>
-  <div class="w-popover-placeholder" v-on-clickaway="away">
-  </div>
+  <div class="w-popover-placeholder" v-on-clickaway="away" />
 </template>
 
 <script>
@@ -13,21 +16,20 @@
 
     props: {
       title: { type: String, default: null },
-      targetId: { type: String, required: true },
-      addClass: { type: String, default: '' },
+      target: { type: String, required: true },
     },
 
     methods: {
       away(ev) {
-        let path = ev.path || (ev.composedPath ? ev.composedPath() : undefined);
+        const path = ev.path || (ev.composedPath ? ev.composedPath() : undefined);
 
-        let targetEl = this.targetEl;
-        let clickedTarget = path ? path.indexOf(targetEl) !== -1 : targetEl.contains(ev.target);
+        const targetEl = this.targetEl;
+        const clickedTarget = path ? path.indexOf(targetEl) !== -1 : targetEl.contains(ev.target);
 
-        let bodyEl = this.childVm.$el;
-        let clickedBody = path ? path.indexOf(bodyEl) !== -1 : bodyEl.contains(ev.target);
+        const bodyEl = this.childVm.$el;
+        const clickedBody = path ? path.indexOf(bodyEl) !== -1 : bodyEl.contains(ev.target);
 
-        let keepOpen = clickedTarget || clickedBody;
+        const keepOpen = clickedTarget || clickedBody;
         if (!keepOpen) {
           this.$emit('close');
         }
@@ -35,24 +37,22 @@
     },
 
     mounted() {
-      let parentVm = this;
+      const Vue = this.$parent.constructor;
+      const parentVm = this;
 
       // @NOTE: Целевой элемент, относительно которого будет позицинироваться поповер
-      this.targetEl = document.querySelector('#' + this.targetId);
-
-      if (!this.targetEl) {
-        this.$emit('close');
-        return;
-      }
+      this.targetEl = document.querySelector(`${this.target}`);
 
       // @NOTE: Создаем содержимое поповера
       this.childVm = new Vue({
+        el: this.childEl,
         parent: parentVm,
         render(h) {
-          return h('div', { class: `popover ${parentVm.addClass}` }, _.compact([
+          const children = [
             parentVm.title ? h('div', { class: 'popover-header' }, parentVm.title) : null,
-            h('div', { class: 'popover-body p-0 btn-menu' }, parentVm.$slots.default),
-          ]));
+            h('div', { class: 'popover-body' }, parentVm.$slots.default),
+          ].filter(child => child != null);
+          return h('div', { class: 'popover' }, children);
         },
       });
 
@@ -71,29 +71,38 @@
             gpuAcceleration: !(window.devicePixelRatio < 1.5 && /Win/.test(navigator.platform)),
           },
           preventOverflow: {
-            boundariesElement: 'window',// без кавычек не работает
+            boundariesElement: 'window',
           },
         },
       });
     },
 
     updated() {
-      this.childVm.$forceUpdate();
+      if (this.childVm) {
+        this.childVm.$forceUpdate();
+      }
     },
 
     beforeDestroy() {
-      if (!this.popper) {
-        return;
+      if (this.popper) {
+        this.popper.destroy();
+        this.popper = null;
       }
-      this.popper.destroy();
-      document.querySelector('body').removeChild(this.childVm.$el);
-      this.childVm.$destroy();
+      if (this.childVm) {
+        document.querySelector('body').removeChild(this.childVm.$el);
+        this.childVm.$destroy();
+        this.childVm = null;
+      }
     },
+
   };
 </script>
 
-<style lang="scss" scoped>
+<style>
   .w-popover-placeholder {
     display: none;
+  }
+  .popover {
+    max-width: none;
   }
 </style>

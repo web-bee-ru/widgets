@@ -15,7 +15,12 @@
   "sideEffects": false,
   "homepage": "https://github.com/web-bee-ru/widgets#readme",
   "dependencies": {
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "popper.js": "^1.16.0",
+    "vue-clickaway": "^2.2.2",
+    "dayjs": "^1.8.17",
+    "vue-virtual-scroller": "^1.0.0-rc.2",
+    "sass-loader": "^8.0.0"
   },
   "publishConfig": {
     "access": "public"

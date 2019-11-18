@@ -10,5 +10,8 @@
   "devDependencies": {
     "cross-env": "^6.0.3",
     "lerna": "^3.18.3"
+  },
+  "dependencies": {
+    "@progress/kendo-angular-dateinputs": "^4.1.0"
   }
 }
