@@ -40,7 +40,10 @@
 
     <h4>w-calendar</h4>
     <w-form-group>
-      <w-calendar v-model="calendar" />
+      <div class="d-flex">
+        <w-calendar v-model="calendar" resolution="date" />
+        <w-calendar v-model="calendar" resolution="date" />
+      </div>
       <pre>{{ { calendar } }}</pre>
     </w-form-group>
 
@@ -57,28 +60,29 @@
     <h4>w-daterange</h4>
     <h4>w-form-date</h4>
 
-    <recycle-scroller
-      style="height: 300px"
-      :items="items"
-      :item-size="32"
-      key-field="id"
-      v-slot="{ item }"
-      >
-      <div class="user">
-        {{ item.name }}
-      </div>
-    </recycle-scroller>
+<!--    @WIP: Remove, and from package.json -->
+<!--    <recycle-scroller-->
+<!--      style="height: 300px"-->
+<!--      :items="items"-->
+<!--      :item-size="32"-->
+<!--      key-field="id"-->
+<!--      v-slot="{ item }"-->
+<!--      >-->
+<!--      <div class="user">-->
+<!--        {{ item.name }}-->
+<!--      </div>-->
+<!--    </recycle-scroller>-->
   </div>
 </template>
 
 <script>
   import mx from './mixin';
-  import { RecycleScroller } from 'vue-virtual-scroller';
-  import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
+  // import { RecycleScroller } from 'vue-virtual-scroller'; // @WIP: Remove, and from package.json
+  // import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'; // @WIP: Remove, and from package.json
 
   export default {
     mixins: [mx],
-    components: { RecycleScroller },
+    // components: { RecycleScroller }, // @WIP: Remove, and from package.json
     data() {
       let items = [];
       for (let i = 0; i < 10000; i++) {

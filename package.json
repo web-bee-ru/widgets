@@ -12,6 +12,7 @@
     "lerna": "^3.18.3"
   },
   "dependencies": {
-    "@progress/kendo-angular-dateinputs": "^4.1.0"
+    "@progress/kendo-angular-dateinputs": "^4.1.0",
+    "vue-virtual-scroller": "^1.0.0-rc.2"
   }
 }
