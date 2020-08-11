@@ -3,7 +3,7 @@ module.exports = {
     '~/plugins/widgets',
   ],
   build: {
-    transpile: ['@web-bee-ru/widgets'],
+    transpile: ['@web-bee-ru/vue-widgets'],
   },
   css: [
     'bootstrap-css-only',

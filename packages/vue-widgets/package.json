@@ -1,5 +1,5 @@
 {
-  "name": "@web-bee-ru/widgets",
+  "name": "@web-bee-ru/vue-widgets",
   "version": "0.1.0",
   "description": "",
   "module": "index.esm.js",

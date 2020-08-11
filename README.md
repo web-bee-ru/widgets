@@ -2,7 +2,7 @@
 
 ## Install
 ```bash
-npm i @web-bee-ru/widgets
+npm i @web-bee-ru/vue-widgets
 ```
 
 ## Use
@@ -12,7 +12,7 @@ npm i @web-bee-ru/widgets
 2a. Import and register all widgets:
 ```js
 import Vue from 'vue';
-import { VuePlugin } from '@web-bee-ru/widgets';
+import { VuePlugin } from '@web-bee-ru/vue-widgets';
 Vue.use(VuePlugin);
 ```
 
@@ -24,7 +24,7 @@ Vue.use(VuePlugin);
   </div>
 </template>
 <script>
-  import { WButton } from '@web-bee-ru/widgets';
+  import { WButton } from '@web-bee-ru/vue-widgets';
   export default {
     components: { WButton },
   };
@@ -34,8 +34,8 @@ Vue.use(VuePlugin);
 ## Develop
 
 ```bash
-npm run bootstrap # will install dependencies
-npm run dev # will start nuxt sandbox
+npm run bootstrap # install dependencies
+npm run dev:vue # start dev sandbox
 ```
 
 If you experience issues, try `npm run clean` and then `npm run bootstrap` again.
