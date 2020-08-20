@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    '~/plugins/widgets',
+    '~/plugins/vue-widgets',
   ],
   build: {
     transpile: ['@web-bee-ru/vue-widgets'],
