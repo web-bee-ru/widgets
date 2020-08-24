@@ -5,11 +5,12 @@
         <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
           <slot name="addon-prepend"></slot>
         </w-input-addon>
-        <w-input :id="params.id" :is-invalid="params.hasError" v-bind="$attrs" :value="value" @input="$emit('input', $event)" @blur="v && v.$touch()" />
+        <w-textarea v-bind="$attrs" :value="value" :maxlength="maxLength" @input="$emit('input', $event)" @blur="v && v.$touch()"></w-textarea>
         <w-input-addon place="append" v-if="shouldShowAppendAddon">
           <slot name="addon-append"></slot>
         </w-input-addon>
       </div>
+      <label v-if="displayValueLength" :for="params.id">{{ value.length + "/" + maxLengthLabel }}</label>
     </template>
     <template v-slot:after>
       <slot name="after"></slot>
@@ -19,14 +20,26 @@
 
 <script>
   import WFormGroup from './../w-form-group';
-  import WInput from './../simple-controls/w-input';
+  import WTextarea from '../simple-controls/w-textarea';
   export default {
-    components: { WFormGroup, WInput },
+    components: { WFormGroup, WTextarea },
     props: {
       label: { type: String, default: null },
       // eslint-disable-next-line vue/require-prop-types
       value: { required: true },
       v: { type: Object, default: null },
+      displayValueLength: { type: Boolean, default: false },
+      maxLength: { type: Number, default: 3000 },
+    },
+    computed: {
+      maxLengthLabel() {
+        if (this.v) {
+          return this.v.$params.maxLength ? this.v.$params.maxLength.max : this.maxLength;
+        }
+        else {
+          return this.maxLength;
+        }
+      },
     },
     methods: {
       shouldShowPrependAddon() {
