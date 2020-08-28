@@ -1,15 +1,14 @@
 <template>
   <w-form-group :label="label" :v="v">
     <template v-slot:default="params">
-      <div class="input-group">
-        <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
+      <w-textarea v-bind="$attrs" :value="value" :maxlength="maxLength" @input="$emit('input', $event)" @blur="v && v.$touch()">
+        <template v-slot:addon-prepend>
           <slot name="addon-prepend"></slot>
-        </w-input-addon>
-        <w-textarea v-bind="$attrs" :value="value" :maxlength="maxLength" @input="$emit('input', $event)" @blur="v && v.$touch()"></w-textarea>
-        <w-input-addon place="append" v-if="shouldShowAppendAddon">
+        </template>
+        <template v-slot:addon-append>
           <slot name="addon-append"></slot>
-        </w-input-addon>
-      </div>
+        </template>
+      </w-textarea>
       <label v-if="displayValueLength" :for="params.id">{{ value.length + "/" + maxLengthLabel }}</label>
     </template>
     <template v-slot:after>

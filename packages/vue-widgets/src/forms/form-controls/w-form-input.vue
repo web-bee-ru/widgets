@@ -1,15 +1,14 @@
 <template>
   <w-form-group :label="label" :v="v">
     <template v-slot:default="params">
-      <div class="input-group">
-        <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
+      <w-input :id="params.id" :is-invalid="params.hasError" v-bind="$attrs" :value="value" @input="$emit('input', $event)" @blur="v && v.$touch()">
+        <template v-slot:addon-prepend>
           <slot name="addon-prepend"></slot>
-        </w-input-addon>
-        <w-input :id="params.id" :is-invalid="params.hasError" v-bind="$attrs" :value="value" @input="$emit('input', $event)" @blur="v && v.$touch()" />
-        <w-input-addon place="append" v-if="shouldShowAppendAddon">
+        </template>
+        <template v-slot:addon-append>
           <slot name="addon-append"></slot>
-        </w-input-addon>
-      </div>
+        </template>
+      </w-input>
     </template>
     <template v-slot:after>
       <slot name="after"></slot>
@@ -27,14 +26,6 @@
       // eslint-disable-next-line vue/require-prop-types
       value: { required: true },
       v: { type: Object, default: null },
-    },
-    methods: {
-      shouldShowPrependAddon() {
-        return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];
-      },
-      shouldShowAppendAddon() {
-        return this.$slots['addon-append'] || this.$scopedSlots['addon-append'];
-      },
     },
   };
 </script>

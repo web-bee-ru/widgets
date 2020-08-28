@@ -1,5 +1,13 @@
 <template>
-  <textarea class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" />
+  <div class="input-group">
+    <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
+      <slot name="addon-prepend"></slot>
+    </w-input-addon>
+    <textarea class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" />
+    <w-input-addon place="append" v-if="shouldShowAppendAddon">
+      <slot name="addon-append"></slot>
+    </w-input-addon>
+  </div>
 </template>
 
 <script>
@@ -7,6 +15,14 @@
     props: {
       isInvalid: { type: Boolean, default: false },
       value: { required: true },
+    },
+    methods: {
+      shouldShowPrependAddon() {
+        return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];
+      },
+      shouldShowAppendAddon() {
+        return this.$slots['addon-append'] || this.$scopedSlots['addon-append'];
+      },
     },
   };
 </script>

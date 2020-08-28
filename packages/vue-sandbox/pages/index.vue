@@ -54,6 +54,22 @@
         </w-input-addon>
       </template>
     </w-form-textarea>
+
+    <hr>
+    <w-button @click="prependToggled = !prependToggled">Toggle prepend</w-button>
+    <w-input v-model="value">
+      <template v-if="prependToggled" v-slot:addon-prepend>
+        <w-button variation="outline-secondary" @click="showAlert('Clicked')">Click me!</w-button>
+        <w-button variation="outline-secondary">Button</w-button>
+      </template>
+      <template v-slot:addon-append>
+        <w-input-addon place="append">
+          <w-button variation="outline-secondary">Button</w-button>
+          <w-button variation="outline-secondary">Button</w-button>
+        </w-input-addon>
+      </template>
+    </w-input>
+
   </div>
 </template>
 
