@@ -21,6 +21,7 @@
       label: { type: String, default: null },
       v: { type: Object, default: null },
     },
+
     computed: {
       hasError() {
         return this.v && this.v.$error;

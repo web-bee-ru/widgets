@@ -17,6 +17,7 @@
       variation: { type: [Array, String, Object], default: 'primary' },
       type: { type: String, default: 'button' },
     },
+
     computed: {
       classes() {
         return classesWithPrefix('btn-', this.variation);

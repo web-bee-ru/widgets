@@ -17,6 +17,7 @@
       isInvalid: { type: Boolean, default: false },
       value: { required: true },
     },
+
     methods: {
       shouldShowPrependAddon() {
         return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];

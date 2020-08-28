@@ -22,6 +22,7 @@
   import WTextarea from '../simple-controls/w-textarea';
   export default {
     components: { WFormGroup, WTextarea },
+
     props: {
       label: { type: String, default: null },
       // eslint-disable-next-line vue/require-prop-types
@@ -30,6 +31,7 @@
       displayValueLength: { type: Boolean, default: false },
       maxLength: { type: Number, default: 3000 },
     },
+
     computed: {
       maxLengthLabel() {
         if (this.v) {
@@ -40,6 +42,7 @@
         }
       },
     },
+
     methods: {
       shouldShowPrependAddon() {
         return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];

@@ -14,10 +14,12 @@
   import WCheckbox from './../simple-controls/w-checkbox';
   export default {
     components: { WFormGroup, WCheckbox },
+
     model: {
       prop: 'model',
       event: 'input',
     },
+
     props: {
       label: { type: String, default: null },
       // eslint-disable-next-line vue/require-prop-types

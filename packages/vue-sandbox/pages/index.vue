@@ -86,11 +86,13 @@
         checkedList: [],
       };
     },
+
     methods: {
       showAlert(data) {
         alert(data);
       }
     },
+
     validations() {
       return {
         value: {

@@ -21,6 +21,7 @@
   import WInput from './../simple-controls/w-input';
   export default {
     components: { WFormGroup, WInput },
+
     props: {
       label: { type: String, default: null },
       // eslint-disable-next-line vue/require-prop-types
