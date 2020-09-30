@@ -18,12 +18,31 @@
       value: { required: true },
     },
 
+    data() {
+      return {
+        innerModel: this.value,
+      };
+    },
+
     methods: {
       shouldShowPrependAddon() {
         return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];
       },
       shouldShowAppendAddon() {
         return this.$slots['addon-append'] || this.$scopedSlots['addon-append'];
+      },
+    },
+
+    watch: {
+      value() {
+        if (this.innerModel !== this.value) {
+          this.innerModel = this.value;
+        }
+      },
+      innerModel() {
+        if (this.innerModel !== this.value) {
+          this.$emit('input', this.innerModel);
+        }
       },
     },
   };
