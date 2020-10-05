@@ -27,7 +27,8 @@
 
     <hr>
     <w-button @click="prependToggled = !prependToggled">Toggle prepend</w-button>
-    <w-form-input v-model="value">
+    <div>Validation Test</div>
+    <w-form-input v-model="value" :v="$v.value">
       <template v-if="prependToggled" v-slot:addon-prepend>
         <w-button variation="outline-secondary" @click="showAlert('Clicked')">Click me!</w-button>
         <w-button variation="outline-secondary">Button</w-button>
@@ -57,7 +58,7 @@
 
     <hr>
     <w-button @click="prependToggled = !prependToggled">Toggle prepend</w-button>
-    <w-input v-model="value">
+    <w-input v-model="value" :v="$v.value">
       <template v-if="prependToggled" v-slot:addon-prepend>
         <w-button variation="outline-secondary" @click="showAlert('Clicked')">Click me!</w-button>
         <w-button variation="outline-secondary">Button</w-button>

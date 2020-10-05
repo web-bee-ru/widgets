@@ -3,7 +3,7 @@
     <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
       <slot name="addon-prepend"></slot>
     </w-input-addon>
-    <input class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)">
+    <input class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" @focus="$emit('focus')" @blur="$emit('blur')">
     <w-input-addon place="append" v-if="shouldShowAppendAddon">
       <slot name="addon-append"></slot>
     </w-input-addon>
