@@ -75,6 +75,8 @@
 </template>
 
 <script>
+  import * as vuelidateValidators from 'vuelidate/lib/validators'
+
   export default {
       data() {
       return {
@@ -97,7 +99,7 @@
     validations() {
       return {
         value: {
-          maxLength: global.VuelidateValidators.maxLength(80),
+          maxLength: vuelidateValidators.maxLength(80),
         },
       };
     },
