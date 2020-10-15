@@ -1,12 +1,8 @@
 <template>
   <div class="input-group">
-    <w-input-addon place="prepend" v-if="shouldShowPrependAddon">
-      <slot name="addon-prepend"></slot>
-    </w-input-addon>
+    <slot name="addon-prepend"></slot>
     <input class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" @focus="$emit('focus')" @blur="$emit('blur')">
-    <w-input-addon place="append" v-if="shouldShowAppendAddon">
-      <slot name="addon-append"></slot>
-    </w-input-addon>
+    <slot name="addon-append"></slot>
   </div>
 </template>
 
@@ -22,15 +18,6 @@
       return {
         innerModel: this.value,
       };
-    },
-
-    methods: {
-      shouldShowPrependAddon() {
-        return this.$slots['addon-prepend'] || this.$scopedSlots['addon-prepend'];
-      },
-      shouldShowAppendAddon() {
-        return this.$slots['addon-append'] || this.$scopedSlots['addon-append'];
-      },
     },
 
     watch: {
