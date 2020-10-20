@@ -1,17 +1,17 @@
 {
   "name": "vue-sandbox",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "ISC",
   "scripts": {
     "dev": "nuxt"
   },
   "dependencies": {
-    "@web-bee-ru/vue-widgets": "^0.2.0",
+    "@web-bee-ru/vue-widgets": "^0.3.0",
     "bootstrap-css-only": "^4.3.1",
     "nuxt": "^2.10.2",
-    "sass-loader": "^9.0.3",
     "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "vuelidate": "^0.7.5"
   }
 }
