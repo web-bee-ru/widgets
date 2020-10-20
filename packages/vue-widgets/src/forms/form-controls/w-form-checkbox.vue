@@ -1,6 +1,6 @@
 <template>
   <w-form-group :label="label" :v="v">
-    <template slot-scope="params">
+    <template v-slot:default="params">
       <w-checkbox :input-id="params.id" :class="{ 'is-invalid': true || params.hasError }" v-bind="$attrs" :model="model" @input="$emit('input', $event)" @change.native="v && v.$touch()">
         <slot></slot>
       </w-checkbox>
@@ -14,10 +14,12 @@
   import WCheckbox from './../simple-controls/w-checkbox';
   export default {
     components: { WFormGroup, WCheckbox },
+
     model: {
       prop: 'model',
       event: 'input',
     },
+
     props: {
       label: { type: String, default: null },
       // eslint-disable-next-line vue/require-prop-types

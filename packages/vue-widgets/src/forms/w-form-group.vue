@@ -7,7 +7,7 @@
     </template>
     <template v-else-if="v && v.$error">
       <!-- @TODO: Extract errors -->
-      <div class="form-text text-danger">Значение не корректно</div>
+      <div class="form-text text-danger">Значение некорректно</div>
     </template>
     <slot name="after"></slot>
   </div>
@@ -21,6 +21,7 @@
       label: { type: String, default: null },
       v: { type: Object, default: null },
     },
+
     computed: {
       hasError() {
         return this.v && this.v.$error;

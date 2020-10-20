@@ -15,6 +15,7 @@
       prop: 'model',
       event: 'input',
     },
+
     props: {
       // eslint-disable-next-line vue/require-prop-types
       model: { required: true },
@@ -23,17 +24,20 @@
       value: { default: null },
       inputId: { type: String, default: null },
     },
+
     data() {
       return {
         innerModel: this.model,
         counterKey: 0,
       };
     },
+
     computed: {
       id() {
         return this.inputId || this.$id('checkbox');
       },
     },
+
     watch: {
       model() {
         this.innerModel = this.model;

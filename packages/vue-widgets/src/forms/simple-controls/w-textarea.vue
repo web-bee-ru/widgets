@@ -1,7 +1,7 @@
 <template>
   <div class="input-group">
     <slot name="addon-prepend"></slot>
-    <input class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" @focus="$emit('focus')" @blur="$emit('blur')">
+    <textarea class="form-control" :class="{ 'is-invalid': isInvalid }" v-bind="$attrs" :value="value" @input="$emit('input', $event.target.value)" @focus="$emit('focus')" @blur="$emit('blur')"/>
     <slot name="addon-append"></slot>
   </div>
 </template>
@@ -9,7 +9,6 @@
 <script>
   export default {
     props: {
-      // eslint-disable-next-line vue/require-prop-types
       isInvalid: { type: Boolean, default: false },
       value: { required: true },
     },
